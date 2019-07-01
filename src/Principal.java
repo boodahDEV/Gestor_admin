@@ -3,6 +3,7 @@ import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import Animacion.*;
+import recursos.*;
 
 //import test.Hilos;
 import java.awt.event.MouseAdapter;
@@ -20,6 +21,7 @@ import java.awt.Font;
 
 
 public class Principal extends JFrame {
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane, titulo;
 	public int x, y;
 	
@@ -95,52 +97,27 @@ public class Principal extends JFrame {
 			text_options_dash.setColorTextNormal(new Color(255,255,255));
 			text_options_dash.setFocusable(false);
 			text_options_dash.setBounds(223, 40, 150, 35); 
+			text_options_dash.setVisible(false);
 			titulo.add(text_options_dash);
-			
-		JPanel dashboard = new JPanel();
-		dashboard.setBackground(Color.WHITE);
-		dashboard.setBorder(new MatteBorder(0, 0, 0, 2, (Color) new Color(142,36,170)));
-		dashboard.setBounds(2, 75, 225, 615);
-		contentPane.add(dashboard);
-		dashboard.setLayout(null);
-		
-			MaterialButton config_user = new MaterialButton();
-			config_user.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					config_user.setColorNormal(new Color(142,36,170));
-					config_user.setColorHover(new Color(142,36,170));
-					config_user.setColorPressed(new Color(142,36,170));
-					config_user.setColorTextNormal(new Color(255,255,255));
-				}
-			});
-			config_user.setColorNormal(new Color(255,255,255));
-			config_user.setColorHover(new Color(193,88,220));
-			config_user.setColorPressed(new Color(193,88,220));
-			config_user.setColorTextNormal(new Color(0,0,0));
-			config_user.setFocusable(false);
-			config_user.setText("Configuracion de usuarios");
-			config_user.setBounds(10, 11, 203, 51);
-			dashboard.add(config_user);
 		
 		JPanel panel_contenido = new JPanel();
 		panel_contenido.setBounds(390, 100, 959, 590);
 		contentPane.add(panel_contenido);
+		panel_contenido.setVisible(false);
 		panel_contenido.setLayout(null);
 		
 		JPanel panel_opciones_contenido = new JPanel();
 		panel_opciones_contenido.setBounds(235, 100, 145, 590);
 		contentPane.add(panel_opciones_contenido);
+		panel_opciones_contenido.setVisible(false);
 		panel_opciones_contenido.setLayout(null);
 		
 			MaterialButton agregar_usu = new MaterialButton();
-			agregar_usu.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					config_user.setColorNormal(new Color(142,36,170));
-					config_user.setColorHover(new Color(142,36,170));
-					config_user.setColorPressed(new Color(142,36,170));
-					config_user.setColorTextNormal(new Color(255,255,255));
+			agregar_usu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					new Gestor_color("193,88,220","193,88,220","193,88,220","none",agregar_usu);
+					panel_contenido.setVisible(true);
+					new paneles.Cambia_paneles(panel_contenido, new paneles.Panel_add_user());
 				}
 			});
 			agregar_usu.setColorNormal(new Color(142,36,170));
@@ -167,5 +144,29 @@ public class Principal extends JFrame {
 			MaterialButton none4 = new MaterialButton();
 			none4.setBounds(0, 184, 145, 35);
 			panel_opciones_contenido.add(none4);
+			
+		JPanel dashboard = new JPanel();
+		dashboard.setBackground(Color.WHITE);
+		dashboard.setBorder(new MatteBorder(0, 0, 0, 2, (Color) new Color(142,36,170)));
+		dashboard.setBounds(2, 75, 225, 615);
+		contentPane.add(dashboard);
+		dashboard.setLayout(null);
+		
+			MaterialButton config_user = new MaterialButton();
+			config_user.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					new Gestor_color("142,36,170","142,36,170","142,36,170","255,255,255",config_user);
+					text_options_dash.setVisible(true);
+					panel_opciones_contenido.setVisible(true);
+				}
+			});
+			config_user.setColorNormal(new Color(255,255,255));
+			config_user.setColorHover(new Color(193,88,220));
+			config_user.setColorPressed(new Color(193,88,220));
+			config_user.setColorTextNormal(new Color(0,0,0));
+			config_user.setFocusable(false);
+			config_user.setText("Configuracion de usuarios");
+			config_user.setBounds(10, 11, 203, 51);
+			dashboard.add(config_user);
 	}//end constructor
 }

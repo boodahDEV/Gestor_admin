@@ -13,7 +13,7 @@ public class Gestor_color {
 		cambio_color(base,"normal");
 		cambio_color(hover, "hover");
 		cambio_color(pressed, "pressed");
-		if(!adicional.equals(null))
+		if(!adicional.equals("none"))
 			cambio_color(adicional, "adicional");
 	}//fin constructor
 	
