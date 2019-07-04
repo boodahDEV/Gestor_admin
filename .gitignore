@@ -2,6 +2,8 @@
 /bin/*
 /lib/*
 *.class
+*.json
+*.JSON
 
 # Log file
 *.log
