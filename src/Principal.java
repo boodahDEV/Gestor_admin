@@ -79,7 +79,7 @@ public class Principal extends JFrame {
 			exit.setBounds(1328, 5, 30, 30);
 			titulo.add(exit);
 			
-			JLabel logo = new JLabel("");
+			JLabel logo = new JLabel(""); 
 			logo.setIcon(new ImageIcon(Principal.class.getResource("/recursos/logo_chemical_burette.png")));
 			logo.setBounds(2, 2, 75, 66);
 			titulo.add(logo);

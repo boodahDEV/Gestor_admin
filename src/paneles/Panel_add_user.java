@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
+
+import recursos.Firebase_admin;
 import recursos.MaterialButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JPasswordField;
@@ -157,6 +160,11 @@ public class Panel_add_user extends JPanel {
 		MaterialButton cargar_usu = new MaterialButton();
 		cargar_usu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(correo_valido) {
+						new Firebase_admin('A',jtfemail.getText(), false, String.valueOf(passvalido.getPassword()),jtfnombre.getText()+" "+jtfapellido.getText(), false,"");
+						//Firebase_admin.createUser(jtfemail.getText(), false, String.valueOf(passvalido.getPassword()),jtfnombre.getText()+" "+jtfapellido.getText(), false);
+
+				}else System.out.println("Email incorrecto");
 			}
 		});
 		cargar_usu.setColorNormal(new Color(142,36,170));
